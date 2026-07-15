@@ -1,0 +1,444 @@
+=========================================================
+         EXCEPTION HANDLING USING TRY-CATCH IN JAVA
+=========================================================
+
+Definition
+----------
+Exception Handling is a mechanism in Java used to handle
+runtime errors so that the normal flow of the program is
+not interrupted.
+
+It prevents the program from crashing and allows the
+developer to handle unexpected situations gracefully.
+
+=========================================================
+WHY DO WE USE EXCEPTION HANDLING?
+=========================================================
+
+Without Exception Handling
+
+Program encounters an error
+        ↓
+Program terminates immediately
+
+-------------------------------------
+
+With Exception Handling
+
+Program encounters an error
+        ↓
+Exception is handled
+        ↓
+Program continues executing
+
+=========================================================
+REAL-LIFE SCENARIO
+=========================================================
+
+ATM Machine
+
+Suppose a customer enters the PIN.
+
+Case 1:
+Correct PIN
+↓
+Access Granted
+
+Case 2:
+Wrong PIN
+↓
+Show "Invalid PIN"
+↓
+Allow customer to try again
+
+Instead of crashing the ATM, the system handles the error.
+
+This is exactly what Exception Handling does.
+
+=========================================================
+BUSINESS SCENARIO
+=========================================================
+
+Bank Account Withdrawal
+
+A customer enters the amount to withdraw.
+
+If the customer enters
+
+1000
+
+Transaction Successful.
+
+If the customer accidentally enters
+
+One Thousand
+
+Java cannot convert the text into a number.
+
+Instead of terminating the program,
+
+Exception Handling catches the error and displays
+
+"Please enter a valid numeric amount."
+
+=========================================================
+PROGRAM
+=========================================================
+
+```java
+import java.util.Scanner;
+
+public class BankWithdrawal {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        try {
+
+            System.out.print("Enter withdrawal amount: ₹");
+
+            int amount = sc.nextInt();
+
+            System.out.println("Withdrawal Successful.");
+            System.out.println("Amount Withdrawn: ₹" + amount);
+
+        }
+
+        catch (Exception e) {
+
+            System.out.println("Invalid Input!");
+            System.out.println("Please enter numbers only.");
+
+        }
+
+        System.out.println("Thank you for using our Banking System.");
+
+        sc.close();
+    }
+}
+```
+
+=========================================================
+OUTPUT - CASE 1
+=========================================================
+
+Enter withdrawal amount: ₹5000
+
+Withdrawal Successful.
+
+Amount Withdrawn: ₹5000
+
+Thank you for using our Banking System.
+
+=========================================================
+OUTPUT - CASE 2
+=========================================================
+
+Enter withdrawal amount: ₹Five Thousand
+
+Invalid Input!
+
+Please enter numbers only.
+
+Thank you for using our Banking System.
+
+=========================================================
+FLOW
+=========================================================
+
+Program Starts
+
+        │
+
+        ▼
+
+try Block
+
+        │
+
+        ▼
+
+User Enters Amount
+
+        │
+
+   ┌───────────────┐
+   │ Valid Number? │
+   └───────────────┘
+
+      Yes        No
+
+       │          │
+
+       ▼          ▼
+
+Withdrawal   Exception Occurs
+
+Successful          │
+
+                    ▼
+
+             catch Block Executes
+
+                    ▼
+
+          Display Error Message
+
+                    ▼
+
+          Program Continues
+
+=========================================================
+EXPLANATION
+=========================================================
+
+Step 1
+
+The code inside the try block is executed.
+
+------------------------------------
+
+Step 2
+
+If no exception occurs,
+
+the catch block is skipped.
+
+------------------------------------
+
+Step 3
+
+If an exception occurs,
+
+Java immediately jumps to the catch block.
+
+------------------------------------
+
+Step 4
+
+The error is handled and the program continues.
+
+=========================================================
+ANOTHER SIMPLE EXAMPLE
+=========================================================
+
+Scenario
+
+A student enters two numbers.
+
+The program divides them.
+
+If the second number is zero,
+
+Java throws an ArithmeticException.
+
+=========================================================
+PROGRAM
+=========================================================
+
+```java
+import java.util.Scanner;
+
+public class DivisionDemo {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        try {
+
+            System.out.print("Enter First Number: ");
+            int a = sc.nextInt();
+
+            System.out.print("Enter Second Number: ");
+            int b = sc.nextInt();
+
+            int result = a / b;
+
+            System.out.println("Result = " + result);
+
+        }
+
+        catch (ArithmeticException e) {
+
+            System.out.println("Cannot divide by zero.");
+
+        }
+
+        catch (Exception e) {
+
+            System.out.println("Invalid Input.");
+
+        }
+
+        sc.close();
+
+    }
+
+}
+```
+
+=========================================================
+OUTPUT
+=========================================================
+
+Case 1
+
+Enter First Number: 20
+
+Enter Second Number: 4
+
+Result = 5
+
+-----------------------------------------
+
+Case 2
+
+Enter First Number: 20
+
+Enter Second Number: 0
+
+Cannot divide by zero.
+
+=========================================================
+COMMON EXCEPTIONS
+=========================================================
+
+ArithmeticException
+
+Example
+
+10 / 0
+
+-----------------------------------
+
+ArrayIndexOutOfBoundsException
+
+Example
+
+arr[10]
+
+when array size is only 5.
+
+-----------------------------------
+
+NullPointerException
+
+Example
+
+Calling a method using a null object.
+
+-----------------------------------
+
+InputMismatchException
+
+Example
+
+User enters
+
+ABC
+
+instead of a number.
+
+-----------------------------------
+
+NumberFormatException
+
+Example
+
+Integer.parseInt("Hello")
+
+=========================================================
+WHY TRY-CATCH IS IMPORTANT?
+=========================================================
+
+✔ Prevents program termination.
+
+✔ Handles runtime errors.
+
+✔ Improves user experience.
+
+✔ Makes applications reliable.
+
+✔ Allows program execution to continue.
+
+=========================================================
+REAL-LIFE APPLICATIONS
+=========================================================
+
+✔ ATM Machine
+
+✔ Online Banking
+
+✔ Login System
+
+✔ Hospital Management
+
+✔ Student Management
+
+✔ Railway Reservation
+
+✔ E-Commerce Website
+
+✔ Payment Gateway
+
+✔ File Upload System
+
+✔ Online Examination System
+
+=========================================================
+SYNTAX
+=========================================================
+
+try {
+
+    // Risky Code
+
+}
+
+catch (Exception e) {
+
+    // Error Handling Code
+
+}
+
+=========================================================
+INTERVIEW / VIVA DEFINITION
+=========================================================
+
+"Exception Handling is a mechanism in Java that handles
+runtime errors using try and catch blocks, allowing the
+program to continue execution instead of terminating
+abnormally."
+
+=========================================================
+EASY TRICK TO REMEMBER
+=========================================================
+
+Think of driving a car.
+
+Normal Road
+      ↓
+No Problem
+      ↓
+Continue Driving
+
+----------------------------------
+
+Obstacle Appears
+      ↓
+Brake Applied
+      ↓
+Avoid Accident
+      ↓
+Continue Driving
+
+The obstacle is the Exception.
+
+The brake is the catch block.
+
+The journey continues just like the program continues
+after handling the exception.
+
+=========================================================
