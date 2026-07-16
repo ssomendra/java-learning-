@@ -14,9 +14,14 @@ class Course {
         this.courseCredits = courseCredits;
     }
 
+
+    
     // Getters
+    
     public String getCourseCode() {
+    
         return courseCode;
+    
     }
 
     public String getCourseName() {

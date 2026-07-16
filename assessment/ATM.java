@@ -9,7 +9,6 @@ public class ATM {
         int balance = 10000;
 
         try {
-
             System.out.print("Enter Withdrawal Amount: ");
 
             int amount = sc.nextInt();
